@@ -4,7 +4,7 @@
           "**/slurm*": true,
           "nb/**": true,
     },
-        "python.pythonPath": "/datascope/slurm/miniconda3/envs/ae-tf/bin/python3.8",
+        "python.pythonPath": "/datascope/slurm/miniconda3/envs/viska-tf25/bin/python3.9",
         "python.envFile": "${workspaceFolder}/.env",
         "python.testing.pytestEnabled": false,
         "python.testing.nosetestsEnabled": false,
