@@ -165,6 +165,7 @@ class DNN(object):
             y_pred = self.model.predict(x_test)
         self.MSE = np.mean(np.square(y_test - y_pred), axis=0)
         self.MAE = np.mean(np.abs(y_test - y_pred), axis=0)
+        self.RMS = np.sqrt(self.MSE)
         self.MAEP = np.multiply(self.MAE, Prng)[0]
         self.plot_pred(y_test, y_pred, WR=WR)
         return y_pred
@@ -179,7 +180,7 @@ class DNN(object):
             ax = axs[pdx]
             ax.scatter(y_test[:,pdx], y_pred[:,pdx], s=1, c=y_test[:,pdx])
             ax.plot([[0,0], [1,1]], "r")
-            ax.annotate(f"\n{WR}\nMSE={self.MSE[pdx]:.4f}\n$\Delta$ {self.pname[pdx]}={self.MAEP[pdx]:.2f}", 
+            ax.annotate(f"\n{WR}\nMSE={self.MSE[pdx]:.4f}\n$\Delta$ {self.pname[pdx]}={self.MAEP[pdx]:.2f}\nRMS={self.RMS[pdx]:.2f}", 
                             (0.15, 0.75), xycoords="axes fraction")
             ax.set_xlabel(f"Norm {self.pname[pdx]}")
         axs[0].set_ylabel(f"Top {self.top} {self.mtype} Pred")    
